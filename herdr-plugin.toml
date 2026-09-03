@@ -1,0 +1,34 @@
+id = "jdi.open-editor"
+name = "open-editor"
+version = "0.1.0"
+min_herdr_version = "0.7.4"
+platforms = ["macos", "linux"]
+description = "Fuzzy-pick a file with fzf and open it in your configured $EDITOR."
+
+[[actions]]
+id = "pick"
+title = "open-editor: pick file"
+contexts = ["pane", "workspace"]
+command = ["sh", "-c", "exec \"${HERDR_BIN_PATH:-herdr}\" plugin pane open --plugin jdi.open-editor --entrypoint picker --placement popup --focus"]
+
+[[actions]]
+id = "set-editor"
+title = "open-editor: set editor"
+contexts = ["pane", "workspace"]
+command = ["sh", "-c", "exec \"${HERDR_BIN_PATH:-herdr}\" plugin pane open --plugin jdi.open-editor --entrypoint set_editor --placement popup --focus"]
+
+[[panes]]
+id = "picker"
+title = "open file"
+placement = "popup"
+width = "80%"
+height = "70%"
+command = ["sh", "-c", "exec bash \"$HERDR_PLUGIN_ROOT/bin/pick.sh\""]
+
+[[panes]]
+id = "set_editor"
+title = "set editor"
+placement = "popup"
+width = "50%"
+height = "20%"
+command = ["sh", "-c", "exec bash \"$HERDR_PLUGIN_ROOT/bin/set-editor.sh\""]
