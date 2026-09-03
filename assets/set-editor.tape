@@ -14,11 +14,12 @@ Set Padding 0
 
 Type "herdr"
 Enter
-Sleep 2s
+Sleep 3s
 
 Ctrl+B
+Sleep 300ms
 Ctrl+U
-Sleep 1s
+Sleep 2s
 
 Screenshot assets/set-editor.png
 
